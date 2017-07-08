@@ -1,0 +1,6 @@
+framework module Pods_testexoplayer {
+  umbrella header "Pods-testexoplayer-umbrella.h"
+
+  export *
+  module * { export * }
+}

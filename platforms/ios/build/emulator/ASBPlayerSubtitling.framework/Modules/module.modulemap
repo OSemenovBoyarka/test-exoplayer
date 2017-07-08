@@ -1,0 +1,6 @@
+framework module ASBPlayerSubtitling {
+  umbrella header "ASBPlayerSubtitling-umbrella.h"
+
+  export *
+  module * { export * }
+}

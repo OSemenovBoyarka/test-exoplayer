@@ -1,0 +1,11 @@
+use_frameworks!
+
+target "testexoplayer" do
+# Begin Podfile - /Volumes/Workspace/js/test-exoplayer/node_modules/nativescript-exoplayer/platforms/ios/Podfile 
+ use_frameworks!
+
+pod 'ASBPlayerSubtitling'
+ 
+ # End Podfile 
+
+end
