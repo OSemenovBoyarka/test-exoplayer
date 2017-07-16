@@ -1,32 +1,40 @@
-<!--
-The markup in NativeScript apps contains a series of user interface components, each
-of which NativeScript renders with a platform-specific iOS or Android native control.
-You can find a full list of user interface components you can use in your app at
-https://docs.nativescript.org/ui/components.
--->
-<Page xmlns="http://schemas.nativescript.org/tns.xsd"
-      xmlns:exoplayer="nativescript-exoplayer"
-      navigatingTo="onNavigatingTo"
-      class="page">
-    <!--
-    The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
-    http://docs.nativescript.org/ui/action-bar
-    -->
-    <Page.actionBar>
-        <ActionBar title="My App" icon="" class="action-bar">
-        </ActionBar>
-    </Page.actionBar>
-
+<Page
+  xmlns="http://schemas.nativescript.org/tns.xsd"
+  xmlns:Video="nativescript-exoplayer" loaded="pageLoaded">
+  <ActionBar title="Native Video" />
+  <ScrollView>
     <StackLayout>
-
-        <exoplayer:Video id="nativeexoplayer"
-                         controls="true"
-                         loop="true" autoplay="false" height="280"
-
-                         src="~/videos/big_buck_bunny.mp4"
-                         subtitles="~/videos/sample.srt"/>
-
-        <!-- Remote file to test with https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4 -->
-
+      <Button text="Change Video" tap="{{ changeVideoSource }}" />
+      <GridLayout rows="auto" columns="auto,*,auto,auto" margin="10">
+        <Label text="Current Time: " textWrap="true" />
+        <Label col="1" text="{{ currentTime }}" class="message" textWrap="true" />
+        <Label col="2" text="Video Duration: " textWrap="true" />
+        <Label col="3" text="{{ videoDuration }}" class="message" textWrap="true" />
+      </GridLayout>
+      <GridLayout rows="*" columns="*, *" backgroundColor="#000000">
+        <Video:Video id="nativeVideoPlayer" controls="true" loadingComplete="{{ videoCompleted }}" playbackStart="{{ playbackStart }}" finished="{{ videoFinished }}" loop="false" autoplay="true" height="280" src="{{ videoSrc }}" subtitles="{{ subtitlesSrc }}" row="0" colSpan="2"/>
+        <Label text="Label On Top of Video View" row="0" colSpan="2" color="#fff" horizontalAlignment="center"/>
+      </GridLayout>
+      <StackLayout orientation="horizontal">
+        <Button text="Subtitles en" width="33%" tap="{{ setEnglishSubtitles }}" />
+        <Button text="Subtitles ru" width="33%" tap="{{ setRussianSubtitles }}" />
+        <Button text="Subtitles off" width="33%" tap="{{ disableSubtitles }}" />
+      </StackLayout>
+      <StackLayout orientation="horizontal">
+        <Button text="Pause" width="33%" tap="{{ pauseVideo }}" />
+        <Button text="Play" width="33%" tap="{{ playVideo }}" />
+        <android>
+          <Button text="Stop" width="33%" tap="{{ stopVideo }}" />
+        </android>
+      </StackLayout>
+      <StackLayout orientation="horizontal">
+        <Button text="Mute" width="33%" tap="{{ muteVideo }}" />
+        <Button text="UnMute" width="33%" tap="{{ unmuteVideo }}" />
+        <Button text="Go to 30 seconds" width="33%" tap="{{ goToTime }}" />
+      </StackLayout>
+      <Button text="Animate" width="33%" tap="{{ animate }}"/>
     </StackLayout>
+  </ScrollView>
 </Page>
+<!--      Copy/Paste the url below to view a remote video file       -->
+<!--      https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4    -->

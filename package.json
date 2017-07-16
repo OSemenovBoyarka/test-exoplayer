@@ -25,6 +25,8 @@
 		"babel-traverse": "6.25.0",
 		"babel-types": "6.25.0",
 		"babylon": "6.17.4",
-		"lazy": "1.0.11"
+		"lazy": "1.0.11",
+		"nativescript-dev-typescript": "~0.4.0",
+		"typescript": "~2.2.1"
 	}
 }
